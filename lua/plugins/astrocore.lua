@@ -49,10 +49,9 @@ return {
         -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-        
-        ["fw"] = { "<cmd>HopWord<CR>",
-        desc = "Hop to word",
-        },  
+
+        ["hw"] = { "<cmd>HopWord<CR>", desc = "Hop to word" },
+        ["fw"] = { "<cmd>Telescope live_grep<CR>", desc = "Find Word" },
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
           function()

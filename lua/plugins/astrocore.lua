@@ -52,6 +52,30 @@ return {
 
         ["hw"] = { "<cmd>HopWord<CR>", desc = "Hop to word" },
         ["fw"] = { "<cmd>Telescope live_grep<CR>", desc = "Find Word" },
+
+        ["<C-t>"] = {
+          function()
+            -- Neo-treeからファイルシステムの状態を取得
+            local state = require("neo-tree.sources.manager").get_state "filesystem"
+            local node = state.tree:get_node()
+
+            -- ノードが存在するか確認
+            if node == nil then
+              vim.notify "No file or directory selected."
+              return
+            end
+
+            -- 選択されたノードのパスを取得
+            local path = node:get_id()
+
+            -- Weztermをそのパスで開く
+            local cmd = string.format("wezterm cli spawn --cwd %s", path)
+            vim.fn.jobstart(cmd, { detach = true })
+          end,
+          noremap = true,
+          silent = true,
+        },
+
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
           function()

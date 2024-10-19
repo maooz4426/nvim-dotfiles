@@ -55,28 +55,39 @@ return {
 
         ["<C-t>"] = {
           function()
-            -- Neo-treeからファイルシステムの状態を取得
+            -- neo-treeからファイルシステムの状態を取得
             local state = require("neo-tree.sources.manager").get_state "filesystem"
+
+            if not state then
+              vim.notify "failed to get neo-tree state"
+              return
+            end
             local node = state.tree:get_node()
 
             -- ノードが存在するか確認
             if node == nil then
-              vim.notify "No file or directory selected."
+              vim.notify "no file or directory selected."
               return
             end
 
             -- 選択されたノードのパスを取得
             local path = node:get_id()
 
-            -- Weztermをそのパスで開く
+            vim.notify(path)
+
+            -- weztermをそのパスで開く
             local cmd = string.format("wezterm cli spawn --cwd %s", path)
             vim.fn.jobstart(cmd, { detach = true })
           end,
           noremap = true,
           silent = true,
-        },
+          desc = "Open WezTerm in the currently selected directory.",
+        }, -- mappings seen under group name "Buffer"
 
-        -- mappings seen under group name "Buffer"
+        ["ac"] = {
+          "<cmd>%y<CR>",
+          desc = "All Text Copy",
+        },
         ["<Leader>bd"] = {
           function()
             require("astroui.status.heirline").buffer_picker(

@@ -8,6 +8,7 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.color.transparent-nvim" },
 
   -- import/override with your plugins folder
   { import = "astrocommunity.completion.copilot-lua-cmp" },

@@ -88,6 +88,7 @@ return {
           "<cmd>%y<CR>",
           desc = "All Text Copy",
         },
+
         ["<Leader>bd"] = {
           function()
             require("astroui.status.heirline").buffer_picker(

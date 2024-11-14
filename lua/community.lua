@@ -10,6 +10,7 @@ return {
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.color.transparent-nvim" },
   { import = "astrocommunity.colorscheme.dracula-nvim" },
+  { import = "astrocommunity.pack.typescript" },
 
   -- import/override with your plugins folder
   { import = "astrocommunity.completion.copilot-lua-cmp" },

@@ -14,6 +14,7 @@ return {
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.terraform" },
+  { import = "astrocommunity.pack.yaml" },
 
   -- import/override with your plugins folder
   { import = "astrocommunity.completion.copilot-lua-cmp" },
